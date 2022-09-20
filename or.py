@@ -11,7 +11,7 @@ def main(eta,epoch,data,modelName,plotName):
     model_or = Perceptron(eta=ETA, epochs=EPOCH)
     model_or.fit(X, y)
 
-    model_or.save(filename=modelName, model_dir='model_or')
+    model_or.save(filename=modelName, model_dir='model')
 
     save_plot(OR, filename=plotName, model=model_or)
 
