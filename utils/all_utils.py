@@ -6,6 +6,15 @@ import logging
 
 
 def preparedata(df):
+    """
+    It returns label and Independent Features
+
+    :param df (pd.DataFrame): This takes a dataframe
+
+    :return: THis return same dataframe but without label column separated
+
+    """
+
     logging.info("Start Preparing Data for Model")
     x=df.drop(['Y'],axis=1)
     y=df['Y']
@@ -14,6 +23,15 @@ def preparedata(df):
 #Plots
 
 def save_plot(df, model, filename='plot.png', plot_dir='plots'):
+    """
+    This Function takes arguments to create plot and decision plots
+
+    :param df (pd.DataFrame): This takes our data frame
+    :param model: This is model that we created after training
+    :param filename: This image Name of graph
+    :param plot_dir: It is folder in which image will be stored
+
+    """
     def _create_plot(df):
         logging.info('Creating Plot')
         df.plot(kind='scatter', x='x1', y='x2', c='Y', s=100, cmap='summer_r')

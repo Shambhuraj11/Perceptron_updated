@@ -18,6 +18,14 @@ logging.basicConfig(level=logging.INFO,filename=os.path.join(log_dir,'running_lo
 
 
 def main(eta,epoch,data,modelName,plotName):
+    """
+
+    :param eta: learning parameter (Keep small so that model get trained efficiently)
+    :param epoch: Number of time model should learn from given dataset
+    :param data (pd.Dataframe):
+    :param modelName: This is name for storing model as a file
+    :param plotName: THis is name of image for platting graph
+    """
     OR = pd.DataFrame(data)
     logging.info(f'This is raw dataset: \n {OR}')
 
