@@ -2,9 +2,11 @@ from matplotlib import  pyplot as plt
 import os
 from matplotlib.colors import ListedColormap
 import numpy as np
+import logging
 
 
 def preparedata(df):
+    logging.info("Start Preparing Data for Model")
     x=df.drop(['Y'],axis=1)
     y=df['Y']
     return x,y
@@ -13,6 +15,7 @@ def preparedata(df):
 
 def save_plot(df, model, filename='plot.png', plot_dir='plots'):
     def _create_plot(df):
+        logging.info('Creating Plot')
         df.plot(kind='scatter', x='x1', y='x2', c='Y', s=100, cmap='summer_r')
         plt.axhline(y=0, color='Black', linestyle='--', linewidth=1)
         plt.axvline(x=0, color='Black', linestyle='--', linewidth=1)
@@ -21,6 +24,7 @@ def save_plot(df, model, filename='plot.png', plot_dir='plots'):
 
     def _Decision_plot(X, y, classifier, resolution=0.02):
         colors = ('cyan', 'lightgreen')
+        logging.info('Creating Decision Regions')
         cmap = ListedColormap(colors)
         X = X.values
         x1 = X[:, 0]
@@ -45,4 +49,5 @@ def save_plot(df, model, filename='plot.png', plot_dir='plots'):
     os.makedirs(plot_dir, exist_ok=True)  # create Folder
     plot_path = os.path.join(plot_dir, filename)  # join file name with folder name to create path
     plt.savefig(plot_path)
+    logging.info(f'Saving plot at {plot_path}')
 
